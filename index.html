@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waffle Needs a Snack</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="cover" class="screen active">
+      <div class="cover-card">
+        <h1>Waffle Needs a Snack</h1>
+        <p>A Little Adventure of Waffle</p>
+        <button id="startBtn">Start Book</button>
+      </div>
+    </section>
+
+    <section id="reader" class="screen">
+      <header class="topbar">
+        <button id="homeBtn">Cover</button>
+        <span id="pageCounter"></span>
+      </header>
+
+      <div class="book-frame">
+        <img id="pageImage" alt="Story page" />
+      </div>
+
+      <nav class="controls">
+        <button id="prevBtn">Back</button>
+        <button id="nextBtn">Next</button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="book.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
