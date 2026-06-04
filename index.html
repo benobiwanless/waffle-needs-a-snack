@@ -3,32 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waffle Needs a Snack</title>
+  <title>The Little Adventures of Waffle</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="app">
-    <section id="cover" class="screen active">
-      <div class="cover-card">
-        <h1>Waffle Needs a Snack</h1>
-        <p>A Little Adventure of Waffle</p>
-        <button id="startBtn">Start Book</button>
+  <main class="library">
+    <section class="library-card">
+      <h1>The Little Adventures of Waffle</h1>
+      <p>Cozy mobile storybooks for little readers.</p>
+      <div class="book-grid">
+        <a class="book-card" href="books/book1/index.html">
+          <span class="book-status complete">Complete</span>
+          <h2>Waffle Needs a Snack</h2>
+          <p>Waffle looks for something yummy in the forest.</p>
+        </a>
+        <a class="book-card" href="books/book2/index.html">
+          <span class="book-status complete">Complete</span>
+          <h2>Waffle Goes Fishing</h2>
+          <p>Waffle visits the pond for a quiet fishing day.</p>
+        </a>
       </div>
-    </section>
-    <section id="reader" class="screen">
-      <header class="topbar">
-        <button id="homeBtn">Cover</button>
-      </header>
-      <div class="book-frame">
-        <img id="pageImage" alt="Story page" />
-      </div>
-      <nav class="controls">
-        <button id="prevBtn">Back</button>
-        <button id="nextBtn">Next</button>
-      </nav>
     </section>
   </main>
-  <script src="book.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
