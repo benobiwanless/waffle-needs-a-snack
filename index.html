@@ -7,23 +7,109 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="library">
-    <section class="library-card">
-      <h1>The Little Adventures of Waffle</h1>
-      <p>Cozy mobile storybooks for little readers.</p>
-      <div class="book-grid">
-        <a class="book-card" href="books/book1/index.html">
-          <span class="book-status complete">Complete</span>
-          <h2>Waffle Needs a Snack</h2>
-          <p>Waffle looks for something yummy in the forest.</p>
-        </a>
-        <a class="book-card" href="books/book2/index.html">
-          <span class="book-status complete">Complete</span>
-          <h2>Waffle Goes Fishing</h2>
-          <p>Waffle visits the pond for a quiet fishing day.</p>
-        </a>
+  <div class="leaf-layer" aria-hidden="true">
+    <span class="leaf leaf-1"></span>
+    <span class="leaf leaf-2"></span>
+    <span class="leaf leaf-3"></span>
+    <span class="leaf leaf-4"></span>
+    <span class="leaf leaf-5"></span>
+    <span class="leaf leaf-6"></span>
+    <span class="leaf leaf-7"></span>
+    <span class="leaf leaf-8"></span>
+    <span class="leaf leaf-9"></span>
+    <span class="leaf leaf-10"></span>
+    <span class="leaf leaf-11"></span>
+    <span class="leaf leaf-12"></span>
+  </div>
+
+  <main class="library-page">
+    <section class="hero-shell">
+      <div class="hero-card">
+        <div class="hero-top-row">
+          <div class="hero-copy-wrap">
+            <p class="eyebrow">Waffle's Storybook Library</p>
+            <h1>The Little Adventures of Waffle</h1>
+            <p class="hero-copy">A cozy, magical bookshelf full of tiny adventures for little readers. Swipe or tap through the covers below and pick your next Waffle adventure.</p>
+          </div>
+
+          <div class="mascot-card">
+            <div class="mascot-glow"></div>
+            <img src="books/book2/images/page-01.jpg" alt="Waffle mascot" class="mascot-img" />
+            <div class="mascot-bubble">Hi, friend!<br />Let’s read!</div>
+          </div>
+        </div>
+
+        <section class="carousel-wrap" aria-label="Book covers carousel">
+          <button class="carousel-btn prev" id="prevCover" aria-label="Previous cover">‹</button>
+
+          <div class="carousel-window">
+            <div class="carousel-track" id="coverTrack">
+              <a class="cover-slide" href="books/book1/index.html" data-title="Waffle Needs a Snack">
+                <div class="cover-frame">
+                  <img src="books/book1/images/page-01.jpg" alt="Cover art for Waffle Needs a Snack" />
+                </div>
+                <div class="cover-info">
+                  <span class="cover-badge">Book 1</span>
+                  <h2>Waffle Needs a Snack</h2>
+                  <p>Waffle looks for something yummy in the forest.</p>
+                </div>
+              </a>
+
+              <a class="cover-slide" href="books/book2/index.html" data-title="Waffle Goes Fishing">
+                <div class="cover-frame">
+                  <img src="books/book2/images/page-01.jpg" alt="Cover art for Waffle Goes Fishing" />
+                </div>
+                <div class="cover-info">
+                  <span class="cover-badge">Book 2</span>
+                  <h2>Waffle Goes Fishing</h2>
+                  <p>Waffle visits the pond for a quiet fishing day.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <button class="carousel-btn next" id="nextCover" aria-label="Next cover">›</button>
+        </section>
+
+        <div class="carousel-dots" id="carouselDots" aria-label="Carousel navigation dots"></div>
+
+        <div class="hero-actions">
+          <a class="action-btn primary" id="readCurrent" href="books/book1/index.html">Read Featured Book</a>
+          <a class="action-btn secondary" href="#bookShelf">Browse Library</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shelf-shell" id="bookShelf">
+      <div class="shelf-card wooden-shelf-bg">
+        <div class="shelf-heading">
+          <p class="eyebrow">Pick a Story</p>
+          <h2>Waffle's Book Shelf</h2>
+        </div>
+
+        <div class="book-grid fun-grid">
+          <a class="book-card themed-card" href="books/book1/index.html">
+            <img class="card-thumb" src="books/book1/images/page-01.jpg" alt="Waffle Needs a Snack thumbnail" />
+            <div class="card-copy">
+              <span class="book-status complete">Complete</span>
+              <h3>Waffle Needs a Snack</h3>
+              <p>Waffle wanders into the forest to find a yummy treat.</p>
+            </div>
+          </a>
+
+          <a class="book-card themed-card" href="books/book2/index.html">
+            <img class="card-thumb" src="books/book2/images/page-01.jpg" alt="Waffle Goes Fishing thumbnail" />
+            <div class="card-copy">
+              <span class="book-status complete">Complete</span>
+              <h3>Waffle Goes Fishing</h3>
+              <p>Waffle spends a peaceful day by the sparkling pond.</p>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   </main>
+
+  <script src="library.js"></script>
 </body>
 </html>

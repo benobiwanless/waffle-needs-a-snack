@@ -2,3 +2,7 @@ The Little Adventures of Waffle — complete GitHub Pages site with Book 1 and B
 Upload the contents of this ZIP to your GitHub repo root.
 
 This version uses compressed JPG images for easier GitHub upload.
+
+Updated homepage includes a themed scrolling cover library.
+
+Deluxe homepage update: falling leaves, wooden bookshelf, Waffle mascot, animated cover carousel.
