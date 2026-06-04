@@ -1,1 +1,1 @@
-Waffle Needs a Snack — Final mobile test book with page numbers removed from the reader and story images.
+Waffle Needs a Snack — page numbers removed with fresh image filenames to avoid browser cache.
