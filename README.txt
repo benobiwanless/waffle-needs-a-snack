@@ -8,3 +8,4 @@ Updated homepage includes a themed scrolling cover library.
 Deluxe homepage update: falling leaves, wooden bookshelf, Waffle mascot, animated cover carousel.
 
 Removed falling leaves and updated the front-page Waffle mascot to a standalone image without page text.
+Added Book 3: Waffle Visits Grandma and Grandpa.
