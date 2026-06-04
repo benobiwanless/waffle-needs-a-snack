@@ -28,8 +28,11 @@ button {
 }
 button:disabled { opacity: .45; }
 .topbar {
-  width: min(100%, 720px); margin: 0 auto 10px; display: flex; justify-content: space-between; align-items: center;
-  color: #fff7df; text-shadow: 0 2px 6px rgba(0,0,0,.55); font-weight: 800;
+  width: min(100%, 720px);
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .topbar button { padding: 9px 14px; background: rgba(64,91,47,.95); }
 .book-frame {

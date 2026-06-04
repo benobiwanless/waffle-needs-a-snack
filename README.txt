@@ -1,1 +1,1 @@
-Waffle Needs a Snack — Final updated mobile test book with the new Waffle end page.
+Waffle Needs a Snack — Final mobile test book with page numbers removed from the reader and story images.
