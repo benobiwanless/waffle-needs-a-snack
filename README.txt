@@ -13,3 +13,7 @@ Added Book 4: Waffle Goes to the Zoo.
 Added Book 5: Waffle's Rainy Day.
 Added Book 6: Waffle and the Lost Baby Bird.
 Added Book 7: Waffle Goes Camping.
+Corrected Books 5 and 6 to use the locked Waffle character style.
+Added Book 8: Waffle’s Picnic.
+Added Book 9: Waffle at the Pumpkin Patch.
+Added visible story text below pages for Books 5-9.

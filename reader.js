@@ -3,11 +3,21 @@ document.title = BOOK_TITLE;
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const pageImage = document.getElementById("pageImage");
+const storyTextBox = document.getElementById("storyTextBox");
+const pageText = document.getElementById("pageText");
+const showPageText = typeof SHOW_PAGE_TEXT !== "undefined" ? SHOW_PAGE_TEXT : false;
+if (showPageText) {
+  document.body.classList.add("has-page-text");
+  if (storyTextBox) storyTextBox.style.display = "block";
+} else {
+  if (storyTextBox) storyTextBox.style.display = "none";
+}
 let currentPage = 0;
 function renderPage() {
   const page = BOOK_PAGES[currentPage];
   pageImage.src = page.image;
   pageImage.alt = page.text;
+  if (showPageText && pageText) pageText.textContent = page.text || "";
   prevBtn.disabled = currentPage === 0;
   nextBtn.textContent = currentPage === BOOK_PAGES.length - 1 ? "Done" : "Next";
 }
