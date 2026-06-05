@@ -10,3 +10,5 @@ Deluxe homepage update: falling leaves, wooden bookshelf, Waffle mascot, animate
 Removed falling leaves and updated the front-page Waffle mascot to a standalone image without page text.
 Added Book 3: Waffle Visits Grandma and Grandpa.
 Added Book 4: Waffle Goes to the Zoo.
+Added Book 5: Waffle's Rainy Day.
+Added Book 6: Waffle and the Lost Baby Bird.
