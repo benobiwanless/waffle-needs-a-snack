@@ -1,3 +1,4 @@
+const SHOW_PAGE_TEXT = true;
 const BOOK_TITLE = "Waffle and the Lost Baby Bird";
 const BOOK_PAGES = [
   {

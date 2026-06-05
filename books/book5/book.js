@@ -1,3 +1,4 @@
+const SHOW_PAGE_TEXT = true;
 const BOOK_TITLE = "Waffle's Rainy Day";
 const BOOK_PAGES = [
   {
