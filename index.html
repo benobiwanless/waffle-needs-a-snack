@@ -3,140 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Little Adventures of Waffle</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#6f472d" />
+  <title>Waffle Goes Fishing</title>
+  <style>
+    :root {
+      --brown: #6f472d;
+      --cream: #fff8e8;
+      --gold: #e7b45d;
+      --shadow: rgba(45, 30, 18, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.55), transparent 35%),
+        linear-gradient(180deg, #dcefc7 0%, #9cc47f 45%, #5f8257 100%);
+      color: #2f241d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: min(1100px, 100%);
+      text-align: center;
+      padding: 22px 18px 12px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-shadow: 0 2px 0 rgba(255,255,255,.55);
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+    }
+
+    main {
+      width: min(1100px, 100%);
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 12px 18px 26px;
+    }
+
+    .book-shell {
+      width: min(92vw, 720px);
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .page-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 561 / 701;
+      border: 10px solid var(--cream);
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 20px 50px var(--shadow);
+      touch-action: pan-y;
+    }
+
+    .page-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--cream);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .counter {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 248, 232, .9);
+      color: var(--brown);
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    }
+
+    .controls {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--brown);
+      color: white;
+      box-shadow: 0 6px 16px rgba(45,30,18,.24);
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px); }
+    button:disabled { opacity: .42; cursor: not-allowed; transform: none; }
+
+    .dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      max-width: 300px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid var(--brown);
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .dot.active { background: var(--gold); }
+
+    footer {
+      width: min(1100px, 100%);
+      padding: 0 18px 22px;
+      text-align: center;
+      color: rgba(47, 36, 29, .8);
+      font-size: .95rem;
+    }
+
+    @media (max-width: 620px) {
+      header { padding-top: 14px; }
+      .book-shell { width: 96vw; }
+      .page-frame { border-width: 6px; border-radius: 14px; }
+      .controls { grid-template-columns: 1fr 1fr; }
+      .dots { grid-column: 1 / -1; grid-row: 2; }
+      button { padding: 11px 14px; }
+    }
+  </style>
 </head>
 <body>
-  <main class="library-page">
-    <section class="hero-shell">
-      <div class="hero-card">
-        <div class="hero-top-row">
-          <div class="hero-copy-wrap">
-            <p class="eyebrow">Waffle's Storybook Library</p>
-            <h1>The Little Adventures of Waffle</h1>
-            <p class="hero-copy">A cozy, magical bookshelf full of tiny adventures for little readers. Swipe or tap through the covers below and pick your next Waffle adventure.</p>
-          </div>
+  <header>
+    <h1>Waffle Goes Fishing</h1>
+    <p class="subtitle">A gentle picture book for little readers</p>
+  </header>
 
-          <div class="mascot-card">
-            <div class="mascot-glow"></div>
-            <img src="assets/waffle-mascot.jpg" alt="Waffle mascot" class="mascot-img" />
-            <div class="mascot-bubble">Hi, friend!<br />Let’s read!</div>
-          </div>
-        </div>
-
-        <section class="carousel-wrap" aria-label="Book covers carousel">
-          <button class="carousel-btn prev" id="prevCover" aria-label="Previous cover">‹</button>
-          <div class="carousel-window">
-            <div class="carousel-track" id="coverTrack">
-              <a class="cover-slide" href="books/book1/index.html" data-title="Waffle Needs a Snack">
-                <div class="cover-frame"><img src="books/book1/images/page-01.jpg" alt="Cover art for Waffle Needs a Snack" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 1</span><h2>Waffle Needs a Snack</h2><p>Waffle looks for something yummy in the forest.</p></div>
-              </a>
-              <a class="cover-slide" href="books/book2/index.html" data-title="Waffle Goes Fishing">
-                <div class="cover-frame"><img src="books/book2/images/page-01.jpg" alt="Cover art for Waffle Goes Fishing" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 2</span><h2>Waffle Goes Fishing</h2><p>Waffle visits the pond for a quiet fishing day.</p></div>
-              </a>
-              <a class="cover-slide" href="books/book3/index.html" data-title="Waffle Visits Grandma and Grandpa">
-                <div class="cover-frame"><img src="books/book3/images/page-01.jpg" alt="Cover art for Waffle Visits Grandma and Grandpa" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 3</span><h2>Waffle Visits Grandma and Grandpa</h2><p>Waffle takes a warm and happy trip to see Grandma and Grandpa.</p></div>
-              </a>
-              <a class="cover-slide" href="books/book4/index.html" data-title="Waffle Goes to the Zoo">
-                <div class="cover-frame"><img src="books/book4/images/page-01.jpg" alt="Cover art for Waffle Goes to the Zoo" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 4</span><h2>Waffle Goes to the Zoo</h2><p>Waffle meets giraffes, monkeys, penguins, and an elephant at the zoo.</p></div>
-              </a>
-
-              <a class="cover-slide" href="books/book5/index.html" data-title="Waffle's Rainy Day">
-                <div class="cover-frame"><img src="books/book5/images/page-01.jpg" alt="Cover art for Waffle's Rainy Day" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 5</span><h2>Waffle's Rainy Day</h2><p>Waffle splashes, listens to rain, and finds a bright rainbow.</p></div>
-              </a>
-
-              <a class="cover-slide" href="books/book6/index.html" data-title="Waffle and the Lost Baby Bird">
-                <div class="cover-frame"><img src="books/book6/images/page-01.jpg" alt="Cover art for Waffle and the Lost Baby Bird" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 6</span><h2>Waffle and the Lost Baby Bird</h2><p>Waffle helps a tiny baby bird find its way back home.</p></div>
-              </a>
-
-              <a class="cover-slide" href="books/book7/index.html" data-title="Waffle Goes Camping">
-                <div class="cover-frame"><img src="books/book7/images/page-01.jpg" alt="Cover art for Waffle Goes Camping" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 7</span><h2>Waffle Goes Camping</h2><p>Waffle spends a cozy night camping under the stars.</p></div>
-              </a>
-
-              <a class="cover-slide" href="books/book8/index.html" data-title="Waffle’s Picnic">
-                <div class="cover-frame"><img src="books/book8/images/page-01.jpg" alt="Cover art for Waffle’s Picnic" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 8</span><h2>Waffle’s Picnic</h2><p>Waffle shares a sunny forest picnic with a bunny friend.</p></div>
-              </a>
-
-              <a class="cover-slide" href="books/book9/index.html" data-title="Waffle at the Pumpkin Patch">
-                <div class="cover-frame"><img src="books/book9/images/page-01.jpg" alt="Cover art for Waffle at the Pumpkin Patch" /></div>
-                <div class="cover-info"><span class="cover-badge">Book 9</span><h2>Waffle at the Pumpkin Patch</h2><p>Waffle visits the pumpkin patch and finds a pumpkin just his size.</p></div>
-              </a>
-            </div>
-          </div>
-          <button class="carousel-btn next" id="nextCover" aria-label="Next cover">›</button>
-        </section>
-
-        <div class="carousel-dots" id="carouselDots" aria-label="Carousel navigation dots"></div>
-
-        <div class="hero-actions">
-          <a class="action-btn primary" id="readCurrent" href="books/book1/index.html">Read Featured Book</a>
-          <a class="action-btn secondary" href="#bookShelf">Browse Library</a>
-
-          <a class="book-card themed-card" href="books/book5/index.html">
-            <img class="card-thumb" src="books/book5/images/page-01.jpg" alt="Waffle's Rainy Day thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle's Rainy Day</h3><p>Waffle discovers that rainy days can be full of little adventures.</p></div>
-          </a>
-
-          <a class="book-card themed-card" href="books/book6/index.html">
-            <img class="card-thumb" src="books/book6/images/page-01.jpg" alt="Waffle and the Lost Baby Bird thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle and the Lost Baby Bird</h3><p>Waffle hears a tiny peep and helps a lost baby bird back to its nest.</p></div>
-          </a>
-
-          <a class="book-card themed-card" href="books/book7/index.html">
-            <img class="card-thumb" src="books/book7/images/page-01.jpg" alt="Waffle Goes Camping thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle Goes Camping</h3><p>Waffle packs a lantern and blanket for a camping adventure in the woods.</p></div>
-          </a>
-
-          <a class="book-card themed-card" href="books/book8/index.html">
-            <img class="card-thumb" src="books/book8/images/page-01.jpg" alt="Waffle’s Picnic thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle’s Picnic</h3><p>Waffle packs fruit and a blanket for a sweet picnic under the trees.</p></div>
-          </a>
-
-          <a class="book-card themed-card" href="books/book9/index.html">
-            <img class="card-thumb" src="books/book9/images/page-01.jpg" alt="Waffle at the Pumpkin Patch thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle at the Pumpkin Patch</h3><p>Waffle explores the pumpkin patch and carries home a pumpkin friend.</p></div>
-          </a>
-        </div>
+  <main>
+    <section class="book-shell" aria-label="Waffle Goes Fishing storybook">
+      <div class="page-frame" id="pageFrame">
+        <img id="pageImage" src="images/page-01.png" alt="Page 1 of Waffle Goes Fishing" />
+        <div class="counter" id="counter">1 / 10</div>
       </div>
-    </section>
 
-    <section class="shelf-shell" id="bookShelf">
-      <div class="shelf-card wooden-shelf-bg">
-        <div class="shelf-heading">
-          <p class="eyebrow">Pick a Story</p>
-          <h2>Waffle's Book Shelf</h2>
-        </div>
-
-        <div class="book-grid fun-grid">
-          <a class="book-card themed-card" href="books/book1/index.html">
-            <img class="card-thumb" src="books/book1/images/page-01.jpg" alt="Waffle Needs a Snack thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle Needs a Snack</h3><p>Waffle wanders into the forest to find a yummy treat.</p></div>
-          </a>
-          <a class="book-card themed-card" href="books/book2/index.html">
-            <img class="card-thumb" src="books/book2/images/page-01.jpg" alt="Waffle Goes Fishing thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle Goes Fishing</h3><p>Waffle spends a peaceful day by the sparkling pond.</p></div>
-          </a>
-          <a class="book-card themed-card" href="books/book3/index.html">
-            <img class="card-thumb" src="books/book3/images/page-01.jpg" alt="Waffle Visits Grandma and Grandpa thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle Visits Grandma and Grandpa</h3><p>Waffle visits Grandma and Grandpa for hugs, biscuits, and happy stories.</p></div>
-          </a>
-          <a class="book-card themed-card" href="books/book4/index.html">
-            <img class="card-thumb" src="books/book4/images/page-01.jpg" alt="Waffle Goes to the Zoo thumbnail" />
-            <div class="card-copy"><span class="book-status complete">Complete</span><h3>Waffle Goes to the Zoo</h3><p>Waffle has a fun day meeting animals at the zoo.</p></div>
-          </a>
-        </div>
+      <div class="controls">
+        <button id="prevButton" type="button" aria-label="Previous page">← Previous</button>
+        <div class="dots" id="dots" aria-label="Choose a page"></div>
+        <button id="nextButton" type="button" aria-label="Next page">Next →</button>
       </div>
     </section>
   </main>
 
-  <script src="library.js"></script>
+  <footer>
+    Use the arrow keys, the buttons, or swipe left and right to turn the pages.
+  </footer>
+
+  <script>
+    const totalPages = 10;
+    let currentPage = 1;
+
+    const image = document.getElementById("pageImage");
+    const counter = document.getElementById("counter");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    const dotsContainer = document.getElementById("dots");
+    const frame = document.getElementById("pageFrame");
+
+    function pagePath(page) {
+      return `images/page-${String(page).padStart(2, "0")}.png`;
+    }
+
+    function renderDots() {
+      dotsContainer.innerHTML = "";
+      for (let page = 1; page <= totalPages; page++) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot" + (page === currentPage ? " active" : "");
+        dot.setAttribute("aria-label", `Go to page ${page}`);
+        dot.addEventListener("click", () => showPage(page));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function showPage(page) {
+      currentPage = Math.max(1, Math.min(totalPages, page));
+      image.src = pagePath(currentPage);
+      image.alt = `Page ${currentPage} of Waffle Goes Fishing`;
+      counter.textContent = `${currentPage} / ${totalPages}`;
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+      renderDots();
+    }
+
+    prevButton.addEventListener("click", () => showPage(currentPage - 1));
+    nextButton.addEventListener("click", () => showPage(currentPage + 1));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") showPage(currentPage - 1);
+      if (event.key === "ArrowRight") showPage(currentPage + 1);
+    });
+
+    let touchStartX = 0;
+    frame.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    frame.addEventListener("touchend", (event) => {
+      const difference = event.changedTouches[0].screenX - touchStartX;
+      if (difference > 50) showPage(currentPage - 1);
+      if (difference < -50) showPage(currentPage + 1);
+    }, { passive: true });
+
+    // Preload the remaining pages for smoother page turns.
+    for (let page = 2; page <= totalPages; page++) {
+      const preload = new Image();
+      preload.src = pagePath(page);
+    }
+
+    showPage(1);
+  </script>
 </body>
 </html>
